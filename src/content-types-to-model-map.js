@@ -34,7 +34,7 @@ function contentTypesToModelMap(typesx) {
     } catch (e) {
     }
   });
-  console.log('modelsMap', modelsMap);
+  //console.log('modelsMap', modelsMap);
   return modelsMap;
 }
 
