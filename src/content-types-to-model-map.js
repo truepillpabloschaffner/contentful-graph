@@ -8,18 +8,21 @@ const getRelations = require('./get-relations');
  * @param {any} types
  * @returns
  */
-function contentTypesToModelMap(types) {
+function contentTypesToModelMap(typesx) {
   const modelsMap = {};
-
-  types.items.forEach((type) => {
-    modelsMap[type.sys.id] = {
-      name: type.name,
-      fields: type.fields,
-      relations: getRelations(type, types.items),
-      sys: type.sys,
-    };
+  const types = typesx.contentTypes;
+  types.forEach((type) => {
+    try {
+      modelsMap[type.sys.id] = {
+        name: type.name,
+        fields: type.fields,
+        relations: getRelations(type, types),
+        //sys: type.sys,
+      };
+    } catch (e) {
+    }
   });
-
+  //console.log('modelsMap', modelsMap);
   return modelsMap;
 }
 
